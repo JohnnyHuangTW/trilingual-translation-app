@@ -6,66 +6,6 @@ import { Label } from "@/components/ui/label";
 import { useNavigate, Link } from "react-router-dom";
 import AuthLayout from "./AuthLayout";
 import { useToast } from "@/components/ui/use-toast";
-import { cva } from "@/lib/utils";
-
-const formContainerVariants = cva(
-  "bg-gray-800/30 backdrop-blur-md rounded-2xl shadow-lg p-8 w-full max-w-md mx-auto border border-gray-700/50",
-  {
-    variants: {},
-    defaultVariants: {},
-  },
-);
-
-const labelVariants = cva("text-sm font-medium text-gray-300", {
-  variants: {},
-  defaultVariants: {},
-});
-
-const inputVariants = cva(
-  "h-12 rounded-lg bg-gray-700/50 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500",
-  {
-    variants: {},
-    defaultVariants: {},
-  },
-);
-
-const passwordHintVariants = cva("text-xs text-gray-400 mt-1", {
-  variants: {},
-  defaultVariants: {},
-});
-
-const errorVariants = cva("text-sm text-red-400", {
-  variants: {},
-  defaultVariants: {},
-});
-
-const submitButtonVariants = cva(
-  "w-full h-12 rounded-full bg-blue-600 text-white hover:bg-blue-700 text-sm font-medium",
-  {
-    variants: {},
-    defaultVariants: {},
-  },
-);
-
-const termsTextVariants = cva("text-xs text-center text-gray-400 mt-6", {
-  variants: {},
-  defaultVariants: {},
-});
-
-const termsLinkVariants = cva("text-blue-400 hover:underline", {
-  variants: {},
-  defaultVariants: {},
-});
-
-const loginLinkVariants = cva("text-sm text-center text-gray-400 mt-6", {
-  variants: {},
-  defaultVariants: {},
-});
-
-const loginTextVariants = cva("text-blue-400 hover:underline font-medium", {
-  variants: {},
-  defaultVariants: {},
-});
 
 export default function SignUpForm() {
   const [email, setEmail] = useState("");
@@ -93,10 +33,13 @@ export default function SignUpForm() {
 
   return (
     <AuthLayout title="Create your TranslateX account">
-      <div className={formContainerVariants()}>
+      <div className="bg-gray-800/30 backdrop-blur-md rounded-2xl shadow-lg p-8 w-full max-w-md mx-auto border border-gray-700/50">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="fullName" className={labelVariants()}>
+            <Label
+              htmlFor="fullName"
+              className="text-sm font-medium text-gray-300"
+            >
               Full Name
             </Label>
             <Input
@@ -105,11 +48,14 @@ export default function SignUpForm() {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               required
-              className={inputVariants()}
+              className="h-12 rounded-lg bg-gray-700/50 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email" className={labelVariants()}>
+            <Label
+              htmlFor="email"
+              className="text-sm font-medium text-gray-300"
+            >
               Email
             </Label>
             <Input
@@ -119,11 +65,14 @@ export default function SignUpForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className={inputVariants()}
+              className="h-12 rounded-lg bg-gray-700/50 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password" className={labelVariants()}>
+            <Label
+              htmlFor="password"
+              className="text-sm font-medium text-gray-300"
+            >
               Password
             </Label>
             <Input
@@ -133,32 +82,38 @@ export default function SignUpForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className={inputVariants()}
+              className="h-12 rounded-lg bg-gray-700/50 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500"
             />
-            <p className={passwordHintVariants()}>
+            <p className="text-xs text-gray-400 mt-1">
               Password must be at least 8 characters
             </p>
           </div>
-          {error && <p className={errorVariants()}>{error}</p>}
+          {error && <p className="text-sm text-red-400">{error}</p>}
 
-          <Button type="submit" className={submitButtonVariants()}>
+          <Button
+            type="submit"
+            className="w-full h-12 rounded-full bg-blue-600 text-white hover:bg-blue-700 text-sm font-medium"
+          >
             Create account
           </Button>
 
-          <div className={termsTextVariants()}>
+          <div className="text-xs text-center text-gray-400 mt-6">
             By creating an account, you agree to our{" "}
-            <Link to="/" className={termsLinkVariants()}>
+            <Link to="/" className="text-blue-400 hover:underline">
               Terms of Service
             </Link>{" "}
             and{" "}
-            <Link to="/" className={termsLinkVariants()}>
+            <Link to="/" className="text-blue-400 hover:underline">
               Privacy Policy
             </Link>
           </div>
 
-          <div className={loginLinkVariants()}>
+          <div className="text-sm text-center text-gray-400 mt-6">
             Already have an account?{" "}
-            <Link to="/login" className={loginTextVariants()}>
+            <Link
+              to="/login"
+              className="text-blue-400 hover:underline font-medium"
+            >
               Sign in
             </Link>
           </div>
